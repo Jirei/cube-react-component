@@ -5,6 +5,10 @@
   text-align: center;
 } */
 
+.cube {
+  --cube-size: 50vw;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
