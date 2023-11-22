@@ -17,6 +17,9 @@ export default function Demo() {
         <Cube
           transitionDuration=''
           transitionTimingFunction=''
+          breakpointsToSizes={{
+            xl: '30vw',
+          }}
           currentFace={currentFace}
           containerAdditionalClasses={'cube'}
           cubeFaces={{

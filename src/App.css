@@ -5,9 +5,15 @@
   text-align: center;
 } */
 
-.cube {
-  --cube-size: 50vw;
+/* .cube {
+  --cube-css-size: 80vw;
 }
+
+@media (width: 800px) {
+  .cube {
+    --cube-css-size: 100px;
+  }
+} */
 
 .logo {
   height: 6em;

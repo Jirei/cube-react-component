@@ -1,16 +1,17 @@
 export const facesNames = ['front', 'right', 'back', 'left', 'top', 'bottom'] as const;
 export const cubeSizeBreakpoints = ['base', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
 
-export function getSizesCSSVariables(breakpointsToSizes: Record<CubeSizeBreakpoint, string> | undefined) {
+export function getSizesCSSVariables(breakpointsToSizes: Partial<Record<CubeSizeBreakpoint, string>> | undefined) {
   if (!breakpointsToSizes) return {};
   const sizesCSSVariables: { [index: string]: string | undefined; } = {};
   if (breakpointsToSizes) {
-    let size = '80%';
+    let size = '65vw';
     for (const cubeSizeBreakpoint of cubeSizeBreakpoints) {
-      if (breakpointsToSizes[cubeSizeBreakpoint]) {
-        size = breakpointsToSizes[cubeSizeBreakpoint];
+      const potentialSizeToAdd = breakpointsToSizes[cubeSizeBreakpoint];
+      if (potentialSizeToAdd) {
+        size = potentialSizeToAdd;
       }
-      sizesCSSVariables[`--cube-argument-size-${cubeSizeBreakpoint}`] = size;
+      sizesCSSVariables[`--cube-parameter-size-${cubeSizeBreakpoint}`] = size;
     }
   }
   return sizesCSSVariables;
