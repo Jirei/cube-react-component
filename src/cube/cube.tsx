@@ -1,18 +1,18 @@
-import classes from './cube.module.css';
+import classes from "./cube.module.css";
 import {
   facesNames,
   getSizesCSSVariables,
   type CubeFace,
   type CubeSizeBreakpoint,
-} from './helpers';
+} from "./helpers";
 
 export function Cube({
-  transitionDuration = '1s',
-  transitionTimingFunction = 'cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDuration = "1s",
+  transitionTimingFunction = "cubic-bezier(0.4, 0, 0.2, 1)",
   breakpointsToSizes,
   currentFace,
   cubeFaces,
-  perspective = 'none',
+  perspective = "none",
   containerAdditionalClasses,
   sceneAdditionalClasses,
   cubeAdditionalClasses,
@@ -24,28 +24,28 @@ export function Cube({
 }: CubeProps) {
   const componentCSSVariables: { [index: string]: string | undefined } = {
     ...getSizesCSSVariables(breakpointsToSizes),
-    '--cube-transition-duration': transitionDuration || undefined,
-    '--cube-transition-timing-function': transitionTimingFunction || undefined,
-    '--cube-perspective': perspective || undefined,
+    "--cube-transition-duration": transitionDuration || undefined,
+    "--cube-transition-timing-function": transitionTimingFunction || undefined,
+    "--cube-perspective": perspective || undefined,
   };
 
   return (
     /* container */
     <div
       {...containerAdditionalProps}
-      className={`${classes.container} ${containerAdditionalClasses ?? ''}`}
+      className={`${classes.container} ${containerAdditionalClasses ?? ""}`}
       style={componentCSSVariables as React.CSSProperties}
     >
       {/* scene */}
       <div
         {...sceneAdditionalProps}
-        className={`${classes.scene} ${sceneAdditionalClasses ?? ''}`}
+        className={`${classes.scene} ${sceneAdditionalClasses ?? ""}`}
       >
         {/* cube */}
         <div
           {...cubeAdditionalProps}
           className={`${classes.cube} ${classes[`show-${currentFace}`]} ${
-            cubeAdditionalClasses ?? ''
+            cubeAdditionalClasses ?? ""
           }`}
         >
           {/* faces */}
@@ -56,7 +56,7 @@ export function Cube({
                 aria-hidden={faceName !== currentFace}
                 key={index}
                 className={`${classes.face} ${classes[`face-${faceName}`]} ${
-                  cubeFaceAdditionalClasses ?? ''
+                  cubeFaceAdditionalClasses ?? ""
                 }`}
               >
                 {cubeFaces[faceName]}

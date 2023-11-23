@@ -32,7 +32,7 @@
 
 [helpers.ts:22](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/helpers.ts#L22)
 
-___
+---
 
 ### CubeSizeBreakpoint
 
@@ -52,7 +52,7 @@ ___
 
 [helpers.ts:2](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/helpers.ts#L2)
 
-___
+---
 
 ### facesNames
 
@@ -70,8 +70,8 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
+| Name             | Type                                   |
+| :--------------- | :------------------------------------- |
 | `«destructured»` | [`CubeProps`](interfaces/CubeProps.md) |
 
 #### Returns
