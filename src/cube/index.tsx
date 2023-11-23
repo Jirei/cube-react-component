@@ -1,4 +1,4 @@
-export { Cube } from './cube';
+export { Cube, type CubeProps } from './cube';
 export {
   facesNames,
   cubeSizeBreakpoints,

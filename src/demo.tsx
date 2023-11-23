@@ -15,14 +15,10 @@ export default function Demo() {
     <div className='flex items-center justify-center bg-[#F5E1C6] h-screen'>
       <div className='flex flex-col items-center gap-y-32 gap-x-32'>
         <Cube
-          transitionDuration=''
-          transitionTimingFunction=''
           breakpointsToSizes={{
             xl: '30vw',
           }}
           currentFace={currentFace}
-          containerAdditionalClasses={'cube'}
-          perspective=''
           cubeFaces={{
             front: (
               <div className='w-full h-full'>

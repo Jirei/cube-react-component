@@ -1,5 +1,5 @@
 .container {
-  /* general css for the container */
+  /* general css for the container, the cube-size variable will be changed with the other means to make it responsive */
   width: var(--cube-size);
   height: var(--cube-size);
 }
@@ -47,7 +47,7 @@
 .scene {
   width: var(--cube-size);
   height: var(--cube-size);
-  perspective: var(--cube-perspective);
+  perspective: var(--cube-perspective, none);
 }
 
 .cube {
@@ -55,8 +55,11 @@
   height: 100%;
   position: relative;
   transition-property: transform;
-  transition-timing-function: var(--cube-transition-timing-function);
-  transition-duration: var(--cube-transition-duration);
+  transition-timing-function: var(
+    --cube-transition-timing-function,
+    cubic-bezier(0.4, 0, 0.2, 1)
+  );
+  transition-duration: var(--cube-transition-duration, 1s);
   transform-style: preserve-3d;
 }
 

@@ -24,9 +24,9 @@ export function Cube({
 }: CubeProps) {
   const componentCSSVariables: { [index: string]: string | undefined } = {
     ...getSizesCSSVariables(breakpointsToSizes),
-    '--cube-transition-duration': transitionDuration,
-    '--cube-transition-timing-function': transitionTimingFunction,
-    '--cube-perspective': perspective,
+    '--cube-transition-duration': transitionDuration || undefined,
+    '--cube-transition-timing-function': transitionTimingFunction || undefined,
+    '--cube-perspective': perspective || undefined,
   };
 
   return (
@@ -69,7 +69,7 @@ export function Cube({
   );
 }
 
-interface CubeProps {
+export interface CubeProps {
   /**
    * Duration of the transition between the faces.
    *
@@ -218,7 +218,7 @@ interface CubeProps {
   /**
    * String of CSS classes you can have added to the container classes. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the container.
    * ```
-   * <div
+   * <div // div of the container
    *   className={'container-internal-class-1 container-internal-class-2' + ' ' containerAdditionalClasses}
    * >child components...</div>
    * ``` */
@@ -226,7 +226,7 @@ interface CubeProps {
   /**
    * String of CSS classes you can have added to the scene classes. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the scene.
    * ```
-   * <div
+   * <div // div of the scene
    *   className={'scene-internal-class-1 scene-internal-class-2' + ' ' sceneAdditionalClasses}
    * >child components...</div>
    * ``` */
@@ -234,7 +234,7 @@ interface CubeProps {
   /**
    * String of CSS classes you can have added to the cube classes.
    * ```
-   * <div
+   * <div // div of the cube
    *   className={'cube-internal-class-1 cube-internal-class-2' + ' ' cubeAdditionalClasses}
    * >child components...</div>
    * ``` */
@@ -242,7 +242,7 @@ interface CubeProps {
   /**
    * String of CSS classes you can have added to the faces classes.
    * ```
-   * <div
+   * <div // div of the face
    *   className={'face-internal-class-1 face-internal-class-2' + ' ' faceAdditionalClasses}
    * >child components...</div>
    * ``` */
@@ -251,7 +251,7 @@ interface CubeProps {
   /**
    * Object with props to add to the container. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the container.
    * ```
-   * <div
+   * <div // div of container
    *   {...containerAdditionalProps} {...otherProps}
    * >child components...</div>
    * ``` */
@@ -260,15 +260,15 @@ interface CubeProps {
   /**
    * Object with props to add to the scene. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the scene.
    * ```
-   * <div // container
-   *   {...containerAdditionalProps} {...otherProps}
+   * <div // div of scene
+   *   {...sceneAdditionalProps} {...otherProps}
    * >child components...</div>
    * ``` */
   sceneAdditionalProps?: Record<string, any>;
   /**
    * Object with props to add to the cube.
    * ```
-   * <div // cube
+   * <div // div of cube
    *   {...cubeAdditionalProps} {...otherProps}
    * >child components...</div>
    * ``` */
@@ -276,7 +276,7 @@ interface CubeProps {
   /**
    * Object with props to add to the face.
    * ```
-   * <div // face
+   * <div // div of face
    *   {...faceAdditionalProps} {...otherProps}
    * >child components...</div>
    * ``` */
