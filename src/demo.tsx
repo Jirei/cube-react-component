@@ -22,13 +22,14 @@ export default function Demo() {
           }}
           currentFace={currentFace}
           containerAdditionalClasses={'cube'}
+          perspective=''
           cubeFaces={{
             front: (
               <div className='w-full h-full'>
                 <img
                   className='absolute object-cover w-full h-full'
                   src={templeWaterImage}
-                  alt='Startup image'
+                  alt='Temple and Water Image'
                 />
               </div>
             ),
@@ -37,7 +38,7 @@ export default function Demo() {
                 <img
                   className='absolute object-cover w-full h-full'
                   src={templeImage}
-                  alt='Language school image'
+                  alt='Temple Image 1'
                 />
               </div>
             ),
@@ -46,7 +47,7 @@ export default function Demo() {
                 <img
                   className='absolute object-cover w-full h-full'
                   src={temple2Image}
-                  alt='startup image'
+                  alt='Temple Image 2'
                 />
               </div>
             ),
@@ -55,7 +56,7 @@ export default function Demo() {
                 <img
                   className='absolute object-cover w-full h-full'
                   src={elephantsImage}
-                  alt='startup image'
+                  alt='Startup Image'
                 />
               </div>
             ),
@@ -64,7 +65,7 @@ export default function Demo() {
                 <img
                   className='absolute object-cover w-full h-full'
                   src={cookingImage}
-                  alt='startup image'
+                  alt='Cooking Image'
                 />
               </div>
             ),

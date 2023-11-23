@@ -69,29 +69,13 @@ export function Cube({
   );
 }
 
-/**
- *
- * @param transitionDuration -
- * Duration of the transition between the faces. Default to one second. Use s for seconds and ms for milliseconds.
- *
- * **Examples**:
- *
- * *'0s'* *'1.5s'* *'6s'* *'0ms'* *'150.25ms'* *'6000ms'* (one value only)
- *
- * Refer to the {@link https://developer.mozilla.org/en-US/docs/Web/CSS/time | \<time\> MDN page} for more details about the accepted values.
- *
- * @param transitionTimingFunction -
- * CSS Transition timing function used for the transition between the faces. Default to 'cubic-bezier(0.4, 0, 0.2, 1)'.
- *
- * **Examples**:
- *
- * *'linear'* *'ease-in-out'* *'cubic-bezier(0.25, 0.1, 0.25, 1)'* (one value only)
- *
- * Refer to the {@link https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function | transition-timing-function MDN page} for more details about the accepted values.
- */
 interface CubeProps {
   /**
-   * Duration of the transition between the faces. Default to one second. Use the unit `s` for seconds and `ms` for milliseconds.
+   * Duration of the transition between the faces.
+   *
+   * Default to one second.
+   *
+   *(Use the unit `s` for seconds and `ms` for milliseconds.)
    *
    * **Examples**:
    *
@@ -101,7 +85,9 @@ interface CubeProps {
    */
   transitionDuration?: string;
   /**
-   * CSS Transition timing function used for the transition between the faces. Default to `cubic-bezier(0.4, 0, 0.2, 1)`.
+   * CSS Transition timing function used for the transition between the faces.
+   *
+   * Default to `cubic-bezier(0.4, 0, 0.2, 1)`.
    *
    * **Examples**:
    *
@@ -111,14 +97,22 @@ interface CubeProps {
    */
   transitionTimingFunction?: string;
   /**
-   * Optional breakpoint-to-size object if you want to set the sizes directly in the parameters of the component.
+   * Optional breakpoint-to-size object that is used to set the size of the cube directly in the parameters of the component.
    *
-   * ### Sizing with the `breakpointsToSizes` object and default Tailwind breakpoints
+   * There are 2 ways to set the size of the cube: (The default behavior if any of the two ways isn't used is explained at the end in point `3.`).
+   *
+   *  1. Sizing with the `breakpointsToSizes` object
+   *
+   *  2. Sizing with custom breakpoints and a CSS variable
+   *
+   *  3. (Default behavior)
+   *
+   *  ### 1\. Sizing with the `breakpointsToSizes` object and default Tailwind breakpoints (using this parameter)
    *
    * The breakpoints used are the default ones from Tailwind + there is a `base` breakpoint to target everything below the `sm` breakpoint.
-   * The default value for the base breakpoint is `65vw` and will be used for the default of the ones higher until you provide your own one. At that point it's your own that will be used as a default for the higher breakpoints if you don't provide them.
+   * The default value for the base breakpoint is `65vw` and will be used for the default of the ones higher until you provide your own one. At that point it's your own that will be used as the default for the higher breakpoints if you don't provide them.
    *
-   * It can work well if you use Tailwind breakpoints in your project.
+   * Using this parameter (`breakpointsToSizes`) to set the size of the cube is a quick & easy solution if you use the default Tailwind breakpoints in your project.
    *
    * **Examples**:
    *
@@ -147,12 +141,13 @@ interface CubeProps {
    * }
    * ```
    *
-   * ### Sizing with custom breakpoints
+   *  ### 2. Sizing with custom breakpoints and a CSS variable
    *
-   * If you want custom breakpoints, you should set the `--cube-css-size` CSS variable on the cube or above with your own breakpoints.
-   * Look at the [documentation section](https://documentation.com#css-custom) on self-controlled cube size CSS variable for more information.
+   * If you want custom breakpoints, you should set the `--cube-css-size` CSS variable on the cube or any wrapping component above with your own breakpoints.
    *
-   * ### Behavior when breakpoint-to-size object not provided and no custom breakpoints
+   * Look at this [documentation section](https://documentation.com#css-custom) to read more about how to use your own breakpoints and provide the size with a CSS variable.
+   *
+   * ### 3. Behavior when `breakpoint-to-size` object not provided and no custom breakpoints & CSS variable
    *
    * if `breakpointsToSizes` is not provided (or has the value `undefined`) and the self-controlled cube size CSS variable is not set, the cube will use its own set of default values.
    *
@@ -168,21 +163,123 @@ interface CubeProps {
    * }
    * ```
    *
-   *  It is not recommended to rely on this behavior. It's mostly here to be able to see the cube for discovery purposes without providing sizes immediately.
+   *  It is not recommended to rely on this behavior. It's mostly here to be able to see the cube for discovery purposes without having to provide sizes immediately.
    *
    */
   breakpointsToSizes?: Partial<Record<CubeSizeBreakpoint, string> | undefined>;
+  /**
+   * Face you want the cube to show. Change this parameter to make the cube move and make it show the face selected (the move is animated of course).
+   *
+   * Must be one of : `front` | `right` | `back` | `left` | `top` | `bottom`
+   *
+   * An array with these values is exported from this module for your convenience, can be imported this way:
+   *
+   * ```
+   * import { facesNames } from 'cube-react-component'; // facesNames is ['front', 'right', 'back', 'left', 'top', 'bottom'] (readonly)
+   * ```
+   * You can also import the `CubeFace` type:
+   *
+   * ```
+   * import { CubeFace } from 'cube-react-component'; // type CubeFace = "front" | "right" | "back" | "left" | "top" | "bottom"`
+   * ```
+   * Can be used to type your code with it in TypeScript. For example with useState() from React:
+   *
+   * ```
+   * const [currentFace, setCurrentFace] = useState<CubeFace>('front'); // This state will only accept any of the correct faces for this parameter, perfect!
+   * ```
+   */
   currentFace: CubeFace;
+  /**
+   * The 6 faces you want the cube to have. Provide an object with the following form:
+   * ```
+   *  const cubeFaces = {
+   * front: <p>Anything React Can Render</p>,
+   * right: <p>Anything React Can Render</p>,
+   * back: <p>Anything React Can Render</p>,
+   * left: <p>Anything React Can Render</p>,
+   * top: <p>Anything React Can Render</p>,
+   * bottom: <p>Anything React Can Render</p>;
+   * }
+   * ```
+   * Obviously if you provide that kind of faces, it will not look great. Try to have faces that take the full width and height to have a nice cube in the end. The main use case in mind was a cube carousel for showing images.
+   * Refer to the demo example in the [github repository](https://github.com/Jirei/cube-react-component) if necessary.
+   *
+   */
   cubeFaces: { [Face in CubeFace]: React.ReactNode };
+  /**
+   * Perspective if you want to add one. Default to `none`.
+   *
+   * **Example Values**: `none` `800px` `23rem` `5.5cm`
+   *
+   * Refer to the [MDN page](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective) and this [explanation](https://3dtransforms.desandro.com/perspective) for more details.
+   *
+   */
   perspective?: string;
+  /**
+   * String of CSS classes you can have added to the container classes. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the container.
+   * ```
+   * <div
+   *   className={'container-internal-class-1 container-internal-class-2' + ' ' containerAdditionalClasses}
+   * >child components...</div>
+   * ``` */
   containerAdditionalClasses?: string;
+  /**
+   * String of CSS classes you can have added to the scene classes. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the scene.
+   * ```
+   * <div
+   *   className={'scene-internal-class-1 scene-internal-class-2' + ' ' sceneAdditionalClasses}
+   * >child components...</div>
+   * ``` */
   sceneAdditionalClasses?: string;
+  /**
+   * String of CSS classes you can have added to the cube classes.
+   * ```
+   * <div
+   *   className={'cube-internal-class-1 cube-internal-class-2' + ' ' cubeAdditionalClasses}
+   * >child components...</div>
+   * ``` */
   cubeAdditionalClasses?: string;
+  /**
+   * String of CSS classes you can have added to the faces classes.
+   * ```
+   * <div
+   *   className={'face-internal-class-1 face-internal-class-2' + ' ' faceAdditionalClasses}
+   * >child components...</div>
+   * ``` */
   cubeFaceAdditionalClasses?: string;
   /* eslint-disable @typescript-eslint/no-explicit-any */
+  /**
+   * Object with props to add to the container. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the container.
+   * ```
+   * <div
+   *   {...containerAdditionalProps} {...otherProps}
+   * >child components...</div>
+   * ``` */
   containerAdditionalProps?: Record<string, any>;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  /**
+   * Object with props to add to the scene. Refer to the [github repository](https://github.com/Jirei/cube-react-component) to learn what is the scene.
+   * ```
+   * <div // container
+   *   {...containerAdditionalProps} {...otherProps}
+   * >child components...</div>
+   * ``` */
   sceneAdditionalProps?: Record<string, any>;
+  /**
+   * Object with props to add to the cube.
+   * ```
+   * <div // cube
+   *   {...cubeAdditionalProps} {...otherProps}
+   * >child components...</div>
+   * ``` */
   cubeAdditionalProps?: Record<string, any>;
+  /**
+   * Object with props to add to the face.
+   * ```
+   * <div // face
+   *   {...faceAdditionalProps} {...otherProps}
+   * >child components...</div>
+   * ``` */
   cubeFaceAdditionalProps?: Record<string, any>;
   /* eslint-enable @typescript-eslint/no-explicit-any */
 }
