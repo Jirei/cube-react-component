@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}", "index.html"],
   theme: {
     container: {
       center: true,
@@ -33,6 +33,18 @@ export default {
 )`,
       },
       colors: {
+        "primary-light": "#F5E1C6",
+        "primary-medium": "#DEB887",
+        "primary-dark": "#845415",
+        "primary-very-dark": "#502D00",
+        "secondary-1-light": "#A9DFF4",
+        "secondary-1-medium": "#52B5DC",
+        "secondary-1-dark": "#408AA8",
+        "secondary-1-very-dark": "#285263",
+        "secondary-2-light": "#FCD5FA",
+        "secondary-2-medium": "#EFBBEC",
+        "secondary-2-dark": "#9F489A",
+        "secondary-2-very-dark": "#682B65",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
