@@ -7,11 +7,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@uidotdev/usehooks": "^2.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
@@ -27,6 +31,8 @@
     "eslint-plugin-tsdoc": "^0.2.17",
     "postcss": "^8.4.31",
     "prettier": "3.1.0",
+    "prism-react-renderer": "^2.3.0",
+    "prismjs": "^1.29.0",
     "tailwindcss": "^3.3.5",
     "typedoc": "^0.25.3",
     "typedoc-material-theme": "^1.0.0",

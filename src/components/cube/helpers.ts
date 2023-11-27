@@ -16,10 +16,9 @@ export const cubeSizeBreakpoints = [
 ] as const;
 
 export function getSizesCSSVariables(
-  breakpointsToSizes: Partial<Record<CubeSizeBreakpoint, string>> | undefined,
+  breakpointsToSizes: Partial<Record<CubeSizeBreakpoint, string>>
 ) {
-  if (!breakpointsToSizes) return {};
-  const sizesCSSVariables: { [index: string]: string | undefined } = {};
+  const sizesCSSVariables: { [index: string]: string | undefined; } = {};
   if (breakpointsToSizes) {
     let size = "65vw";
     for (const cubeSizeBreakpoint of cubeSizeBreakpoints) {

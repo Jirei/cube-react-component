@@ -30,9 +30,9 @@
 
 #### Defined in
 
-[helpers.ts:22](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/helpers.ts#L22)
+helpers.ts:39
 
----
+___
 
 ### CubeSizeBreakpoint
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[helpers.ts:20](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/helpers.ts#L20)
+helpers.ts:35
 
 ## Variables
 
@@ -50,9 +50,9 @@
 
 #### Defined in
 
-[helpers.ts:2](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/helpers.ts#L2)
+helpers.ts:9
 
----
+___
 
 ### facesNames
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[helpers.ts:1](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/helpers.ts#L1)
+helpers.ts:1
 
 ## Functions
 
@@ -70,8 +70,8 @@
 
 #### Parameters
 
-| Name             | Type                                   |
-| :--------------- | :------------------------------------- |
+| Name | Type |
+| :------ | :------ |
 | `«destructured»` | [`CubeProps`](interfaces/CubeProps.md) |
 
 #### Returns
@@ -80,4 +80,4 @@
 
 #### Defined in
 
-[cube.tsx:9](https://github.com/Jirei/cube-react-component/blob/a51f95b/src/cube/cube.tsx#L9)
+cube.tsx:9

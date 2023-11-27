@@ -6,41 +6,41 @@
 
 /* base size for the container */
 .container {
-  --cube-size: var(--cube-css-size, var(--cube-parameter-size-base, 65vw));
+  --cube-size: var(--cube-css-size, var(--cube-parameter-size-base));
 }
 
 /* sm size */
 @media (min-width: 640px) {
   .container {
-    --cube-size: var(--cube-css-size, var(--cube-parameter-size-sm, 60vw));
+    --cube-size: var(--cube-css-size, var(--cube-parameter-size-sm));
   }
 }
 
 /* md size */
 @media (min-width: 768px) {
   .container {
-    --cube-size: var(--cube-css-size, var(--cube-parameter-size-md, 50vw));
+    --cube-size: var(--cube-css-size, var(--cube-parameter-size-md));
   }
 }
 
 /* lg size */
 @media (min-width: 1024px) {
   .container {
-    --cube-size: var(--cube-css-size, var(--cube-parameter-size-lg, 40vw));
+    --cube-size: var(--cube-css-size, var(--cube-parameter-size-lg));
   }
 }
 
 /* xl size */
 @media (min-width: 1280px) {
   .container {
-    --cube-size: var(--cube-css-size, var(--cube-parameter-size-xl, 30vw));
+    --cube-size: var(--cube-css-size, var(--cube-parameter-size-xl));
   }
 }
 
 /* 2xl size */
 @media (min-width: 1536px) {
   .container {
-    --cube-size: var(--cube-css-size, var(--cube-parameter-size-2xl, 25vw));
+    --cube-size: var(--cube-css-size, var(--cube-parameter-size-2xl));
   }
 }
 

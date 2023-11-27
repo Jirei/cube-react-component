@@ -7,10 +7,14 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "prettier",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs","tailwind.config.js"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "tailwind.config.js"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh", "eslint-plugin-tsdoc"],
   rules: {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { destructuredArrayIgnorePattern: "^_" },
+    ],
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
