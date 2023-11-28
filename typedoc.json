@@ -1,6 +1,6 @@
 {
   // Comments are supported, like tsconfig.json
   "entryPoints": ["src/components/cube/index.tsx"],
-  "out": "docs",
-  "plugin": ["typedoc-plugin-markdown"]
+  "readme": "documentation.md",
+  "out": "docs"
 }

@@ -3,7 +3,15 @@ import { useCopyToClipboard } from "@uidotdev/usehooks";
 import { useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
-export default function CodeBlock({ code }: { code: string }) {
+export default function CodeBlock({
+  code,
+  language,
+  tailwindPadding = "p-5",
+}: {
+  code: string;
+  language: string;
+  tailwindPadding?: string;
+}) {
   const [_copiedText, copyToClipboard] = useCopyToClipboard();
   const [hasBeenCopied, setHasBeenCopied] = useState(false);
   return (
@@ -30,13 +38,11 @@ export default function CodeBlock({ code }: { code: string }) {
           }}
         />
       </div>
-      <Highlight theme={themes.palenight} code={code} language="tsx">
+      <Highlight theme={themes.palenight} code={code} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
             style={style}
-            className={
-              className + " " + "p-5 rounded max-w-[90vw] overflow-auto"
-            }
+            className={`${className} ${tailwindPadding} rounded max-w-[90vw] overflow-auto`}
           >
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ line })}>

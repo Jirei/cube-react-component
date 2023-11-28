@@ -39,6 +39,7 @@ export function Cube({
   return (
     /* container */
     <div
+      aria-live="polite"
       {...containerAdditionalProps}
       className={`${classes.container} ${containerAdditionalClasses ?? ""}`}
       style={componentCSSVariables as React.CSSProperties}
