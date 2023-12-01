@@ -2,6 +2,8 @@ import classes from "./cube.module.css";
 import {
   facesNames,
   getSizesCSSVariables,
+  defaultSizes,
+  type Either,
   type CubeFace,
   type CubeSizeBreakpoint,
 } from "./helpers";
@@ -9,14 +11,7 @@ import {
 export function Cube({
   transitionDuration = "1s",
   transitionTimingFunction = "cubic-bezier(0.4, 0, 0.2, 1)",
-  breakpointsToSizes = {
-    base: "50vw",
-    sm: "40vw",
-    md: "35vw",
-    lg: "30vw",
-    xl: "25vw",
-    "2xl": "20vw",
-  },
+  sizes = defaultSizes,
   currentFace,
   cubeFaces,
   perspective = "none",
@@ -29,8 +24,10 @@ export function Cube({
   cubeAdditionalProps,
   cubeFaceAdditionalProps,
 }: CubeProps) {
-  const componentCSSVariables: { [index: string]: string | undefined } = {
-    ...getSizesCSSVariables(breakpointsToSizes),
+  const componentCSSVariables: {
+    [index: string]: string | undefined;
+  } = {
+    ...getSizesCSSVariables(sizes),
     "--cube-transition-duration": transitionDuration || undefined,
     "--cube-transition-timing-function": transitionTimingFunction || undefined,
     "--cube-perspective": perspective || undefined,
@@ -39,6 +36,7 @@ export function Cube({
   return (
     /* container */
     <div
+      data-testid="container"
       aria-live="polite"
       {...containerAdditionalProps}
       className={`${classes.container} ${containerAdditionalClasses ?? ""}`}
@@ -46,23 +44,26 @@ export function Cube({
     >
       {/* scene */}
       <div
+        data-testid="scene"
         {...sceneAdditionalProps}
         className={`${classes.scene} ${sceneAdditionalClasses ?? ""}`}
       >
         {/* cube */}
         <div
+          data-testid="cube"
           {...cubeAdditionalProps}
           className={`${classes.cube} ${classes[`show-${currentFace}`]} ${
             cubeAdditionalClasses ?? ""
           }`}
         >
           {/* faces */}
-          {facesNames.map((faceName, index) => {
+          {facesNames.map((faceName) => {
             return (
               <div
                 {...cubeFaceAdditionalProps}
                 aria-hidden={faceName !== currentFace}
-                key={index}
+                key={faceName}
+                data-testid={faceName}
                 className={`${classes.face} ${classes[`face-${faceName}`]} ${
                   cubeFaceAdditionalClasses ?? ""
                 }`}
@@ -77,7 +78,7 @@ export function Cube({
   );
 }
 
-export interface CubeProps {
+export type CubeProps = {
   /**
    * Duration of the transition between the faces.
    * @defaultValue Default to one second.
@@ -103,78 +104,6 @@ export interface CubeProps {
    * Refer to the {@link https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function | transition-timing-function MDN page} for more details about the accepted values.
    */
   transitionTimingFunction?: string;
-  /**
-   * Optional breakpoint-to-size object that is used to set the size of the cube directly in the parameters of the component.
-   *
-   * There are 2 ways to set the size of the cube: (The default behavior if any of the two ways isn't used is explained at the end in point `3.`).
-   *
-   *  1. Sizing with the `breakpointsToSizes` object
-   *
-   *  2. Sizing with custom breakpoints and a CSS variable
-   *
-   *  3. (Default behavior)
-   *
-   *  ### 1\. Sizing with the `breakpointsToSizes` object and default Tailwind breakpoints (using this parameter)
-   *
-   * The breakpoints used are the default ones from Tailwind + there is a `base` breakpoint to target everything below the `sm` breakpoint.
-   * The default value for the base breakpoint is `65vw` and will be used for the default of the ones higher until you provide your own one.
-   * At that point it's your own that will be used as the default for the higher breakpoints if you don't provide them.
-   *
-   * Using this parameter (`breakpointsToSizes`) to set the size of the cube is a quick & easy solution if you use the default Tailwind breakpoints in your project.
-   *
-   * **Examples**:
-   *
-   * 1. Example with complete `breakpointsToSizes` object
-   * ```tsx
-   * {
-   *  'base':'75vw', // the cube will have a width of 75vw when screen width from 0px to 639px
-   *  'sm':'65vw', // the cube will have a width of 65vw when screen width from 640px to 767px
-   *  'md':'35vw', // the cube will have a width of 35vw when screen width from 768px to 1023px
-   *  'lg':'30vw', // the cube will have a width of 30vw when screen width from 1024px to 1279px
-   *  'xl':'25vw', // the cube will have a width of 25vw when screen width from 1280px to 1535px
-   *  '2xl':'20vw' // the cube will have a width of 20vw when screen width from 1536px  to no upper limit
-   * }
-   * ```
-   *
-   * 2. Example with `breakpointsToSizes` object missing values
-   *
-   * ```tsx
-   * {
-   *  // 'base' breakpoint not provided, will take the default value of 65vw from 0px to 639px, equivalent of 'base':'65vw';
-   *  // 'sm' breakpoint not provided, will take the value from the nearest lower breakpoint, here '65vw'
-   *  'md':'35vw', // 'md' is provided, the cube will have a width of 35vw when screen width from 768px to 1023px
-   *  // 'lg' breakpoint not provided, will take the value from the nearest lower breakpoint, here '35vw' from 1024px to 1279px
-   *  'xl':'25vw', // 'xl' is provided, the cube will have a width of 25vw when screen width from 1280px to 1535px
-   *  '2xl':'20vw' // '2xl' is provided, the cube will have a width of 20vw when screen width from 1536px  to no upper limit
-   * }
-   * ```
-   *
-   *  ### 2. Sizing with custom breakpoints and a CSS variable
-   *
-   * If you want custom breakpoints, you should set the `--cube-css-size` CSS variable on the cube or any wrapping component above with your own breakpoints.
-   *
-   * Look at this {@link https://documentation.com#css-custom | documentation section } to read more about how to use your own breakpoints and provide the size with a CSS variable.
-   *
-   * ### 3. Behavior when `breakpoint-to-size` object not provided and no custom breakpoints & CSS variable
-   *
-   * if `breakpointsToSizes` is not provided (or has the value `undefined`) and the self-controlled cube size CSS variable is not set, the cube will use its own set of default values.
-   *
-   *  @defaultValue Default values:
-   * ```tsx
-   * {
-   *   base: "50vw",
-   *   sm: "40vw",
-   *   md: "35vw",
-   *   lg: "30vw",
-   *   xl: "25vw",
-   *   "2xl": "20vw",
-   * }
-   * ```
-   *
-   *  It is not recommended to rely on this behavior. It's mostly here to be able to see the cube for discovery purposes without having to provide sizes immediately.
-   *
-   */
-  breakpointsToSizes?: Partial<Record<CubeSizeBreakpoint, string> | undefined>;
   /**
    * Face you want the cube to show. Change this parameter to make the cube move and make it show the face selected (the move is animated of course).
    *
@@ -294,4 +223,81 @@ export interface CubeProps {
    * ``` */
   cubeFaceAdditionalProps?: Record<string, any>;
   /* eslint-enable @typescript-eslint/no-explicit-any */
-}
+} & Either<CubeSizes, CSSVariableForCubeSize>;
+
+type CubeSizes = {
+  /**
+   * Optional breakpoint-to-size object that is used to set the size of the cube directly in the parameters of the component.
+   *
+   * There are 2 ways to set the size of the cube: (The default behavior if any of the two ways isn't used is explained at the end in point `3.`).
+   *
+   *  1. Sizing with the `sizes` object
+   *
+   *  2. Sizing with custom breakpoints and a CSS variable
+   *
+   *  3. (Default behavior)
+   *
+   *  ### 1\. Sizing with the `sizes` object and default Tailwind breakpoints (using this parameter)
+   *
+   * The breakpoints used are the default ones from Tailwind + there is a `base` breakpoint to target everything below the `sm` breakpoint.
+   * The default value for the base breakpoint is `65vw` and will be used for the default of the ones higher until you provide your own one.
+   * At that point it's your own that will be used as the default for the higher breakpoints if you don't provide them.
+   *
+   * Using this parameter (`sizes`) to set the size of the cube is a quick & easy solution if you use the default Tailwind breakpoints in your project.
+   *
+   * **Examples**:
+   *
+   * 1. Example with complete `sizes` object
+   * ```tsx
+   * {
+   *  'base':'75vw', // the cube will have a width of 75vw when screen width from 0px to 639px
+   *  'sm':'65vw', // the cube will have a width of 65vw when screen width from 640px to 767px
+   *  'md':'35vw', // the cube will have a width of 35vw when screen width from 768px to 1023px
+   *  'lg':'30vw', // the cube will have a width of 30vw when screen width from 1024px to 1279px
+   *  'xl':'25vw', // the cube will have a width of 25vw when screen width from 1280px to 1535px
+   *  '2xl':'20vw' // the cube will have a width of 20vw when screen width from 1536px  to no upper limit
+   * }
+   * ```
+   *
+   * 2. Example with `sizes` object missing values
+   *
+   * ```tsx
+   * {
+   *  // 'base' breakpoint not provided, will take the default value of 65vw from 0px to 639px, equivalent of 'base':'65vw';
+   *  // 'sm' breakpoint not provided, will take the value from the nearest lower breakpoint, here '65vw'
+   *  'md':'35vw', // 'md' is provided, the cube will have a width of 35vw when screen width from 768px to 1023px
+   *  // 'lg' breakpoint not provided, will take the value from the nearest lower breakpoint, here '35vw' from 1024px to 1279px
+   *  'xl':'25vw', // 'xl' is provided, the cube will have a width of 25vw when screen width from 1280px to 1535px
+   *  '2xl':'20vw' // '2xl' is provided, the cube will have a width of 20vw when screen width from 1536px  to no upper limit
+   * }
+   * ```
+   *
+   *  ### 2. Sizing with custom breakpoints and a CSS variable
+   *
+   * If you want custom breakpoints, you should set the `--cube-css-size` CSS variable on the cube or any wrapping component above with your own breakpoints.
+   *
+   * Look at this {@link https://documentation.com#css-custom | documentation section } to read more about how to use your own breakpoints and provide the size with a CSS variable.
+   *
+   * ### 3. Behavior when `breakpoint-to-size` object not provided and no custom breakpoints & CSS variable
+   *
+   * if `sizes` is not provided and the self-controlled cube size CSS variable is not set, the cube will use its own set of default values.
+   *
+   *  @defaultValue Default values:
+   * ```tsx
+   * {
+   *   base: "50vw",
+   *   sm: "40vw",
+   *   md: "35vw",
+   *   lg: "30vw",
+   *   xl: "25vw",
+   *   "2xl": "20vw",
+   * }
+   * ```
+   *
+   *  It is not recommended to rely on this behavior. It's mostly here to be able to see the cube for discovery purposes without having to provide sizes immediately.
+   *
+   */
+  sizes?: Partial<Record<CubeSizeBreakpoint, string> | undefined>;
+};
+
+type CSSVariableForCubeSize = { useCSSVariableForCubeSize: true };

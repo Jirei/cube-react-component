@@ -27,7 +27,7 @@ export default function Demo() {
           Cube React Component
         </h1>
         <Cube
-          breakpointsToSizes={{
+          sizes={{
             base: "50vw",
             sm: "40vw",
             md: "35vw",

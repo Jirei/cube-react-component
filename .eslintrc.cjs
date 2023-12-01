@@ -7,11 +7,18 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react",
     "prettier",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs", "tailwind.config.js"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh", "eslint-plugin-tsdoc"],
+  plugins: [
+    "react-refresh",
+    "eslint-plugin-tsdoc",
+    "jest-dom",
+    "testing-library",
+  ],
   rules: {
     "@typescript-eslint/no-unused-vars": [
       "error",
