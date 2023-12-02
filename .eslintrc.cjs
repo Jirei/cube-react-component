@@ -7,17 +7,25 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    "plugin:jest-dom/recommended",
-    "plugin:testing-library/react",
+    "plugin:playwright/recommended",
+    //"plugin:jest-dom/recommended",
+    //"plugin:testing-library/react",
     "prettier",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs", "tailwind.config.js"],
+  ignorePatterns: [
+    "dist",
+    ".eslintrc.cjs",
+    "tailwind.config.js",
+    "playwright.config.ts",
+    "playwright-ct.config.ts",
+    "playwright"
+  ],
   parser: "@typescript-eslint/parser",
   plugins: [
     "react-refresh",
     "eslint-plugin-tsdoc",
-    "jest-dom",
-    "testing-library",
+    //"jest-dom",
+    //"testing-library",
   ],
   rules: {
     "@typescript-eslint/no-unused-vars": [

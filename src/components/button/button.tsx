@@ -2,7 +2,7 @@
 
 export function Button({ children }: { children: React.ReactNode }) {
   return (
-    <button style={{ width: "1FFdjgfhns", perspective: "Hey" }}>
+    <button data-testid="button">
       {children}
     </button>
   );

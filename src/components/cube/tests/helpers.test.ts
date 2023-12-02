@@ -1,9 +1,8 @@
-import { expect, test, describe } from "vitest";
+import { expect, test } from "@playwright/test";
 import { defaultSizes, getSizesCSSVariables } from "../helpers";
 
-
-describe('getSizesCSSVariables', () => {
-  test('should return the correct CSS variables when provided the defaultBreakpointsToSizes', () => {
+test.describe('getSizesCSSVariables', () => {
+  test('should return the correct CSS variables when provided the default sizes object', () => {
     expect(getSizesCSSVariables(defaultSizes)).toEqual({
       "--cube-parameter-size-base": "50vw",
       "--cube-parameter-size-sm": "40vw",
@@ -14,7 +13,7 @@ describe('getSizesCSSVariables', () => {
     });
   });
 
-  test('should return the correct CSS variables when provided a complete breakpoints object', () => {
+  test('should return the correct CSS variables when provided a complete sizes object', () => {
     expect(getSizesCSSVariables(completeBreakpointsToSizesObject)).toEqual({
       "--cube-parameter-size-base": "80vw",
       "--cube-parameter-size-sm": "60vw",
@@ -25,7 +24,7 @@ describe('getSizesCSSVariables', () => {
     });
   });
 
-  test('should return the correct CSS variables when provided an incomplete breakpoints object', () => {
+  test('should return the correct CSS variables when provided an incomplete sizes object', () => {
     expect(getSizesCSSVariables(incompleteBreakpointsToSizesObject)).toEqual({
       "--cube-parameter-size-base": "65vw",
       "--cube-parameter-size-sm": "65vw",

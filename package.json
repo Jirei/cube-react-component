@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test:dev": "vite --port 9999",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "playwright test --",
+    "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
@@ -17,8 +19,11 @@
     "react-icons": "^4.12.0"
   },
   "devDependencies": {
+    "@playwright/experimental-ct-react": "^1.40.1",
+    "@playwright/test": "^1.40.1",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
+    "@types/node": "^20.10.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -29,12 +34,14 @@
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jest-dom": "^5.1.0",
+    "eslint-plugin-playwright": "^0.19.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "eslint-plugin-testing-library": "^6.2.0",
     "eslint-plugin-tsdoc": "^0.2.17",
     "jsdom": "^23.0.0",
+    "playwright": "^1.40.1",
     "postcss": "^8.4.31",
     "prettier": "3.1.0",
     "prism-react-renderer": "^2.3.0",

@@ -48,7 +48,6 @@
   width: var(--cube-size);
   height: var(--cube-size);
   perspective: var(--cube-perspective, none);
-  perspective: none;
 }
 
 .cube {

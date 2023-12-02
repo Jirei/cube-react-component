@@ -1,18 +1,36 @@
-// @vitest-environment jsdom
-import { test, describe, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-// import { CubeFace, facesNames } from "../helpers";
-import { cubeFaces } from "./test-helpers";
+import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
+import { type Locator } from "playwright/test";
 
-describe("Cube - visibility & accessibility", () => {
-  test("should have perspective none when no perspective is provided", () => {
-    render(getCubeTestSubjectForPerspective({ perspective: "none" }));
-    const scene = screen.getByTestId("scene");
-    console.log(getComputedStyle(scene));
-    expect(getComputedStyle(scene).perspective).toBe("none");
+test.describe("Cube - perspective", () => {
+  test("should have perspective none when no perspective is provided", async ({
+    mount,
+    page,
+  }) => {
+    await mount(getCubeTestSubjectForPerspective({ perspective: undefined }));
+    const scene = page.getByTestId("scene");
+    const perspective = await getPerspectiveFromLocator(scene);
+    expect(perspective).toBe("none");
+  });
+  test("should have the given perspective when a perspective is provided", async ({
+    mount,
+    page,
+  }) => {
+    const providedPerspective = "200px";
+    await mount(
+      getCubeTestSubjectForPerspective({ perspective: providedPerspective }),
+    );
+    const scene = page.getByTestId("scene");
+    const perspective = await getPerspectiveFromLocator(scene);
+    expect(perspective).toBe(providedPerspective);
   });
 });
+
+function getPerspectiveFromLocator(locator: Locator) {
+  return locator.evaluate((element) =>
+    window.getComputedStyle(element).getPropertyValue("perspective"),
+  );
+}
 
 function getCubeTestSubjectForPerspective({
   perspective,
@@ -37,3 +55,13 @@ function getCubeTestSubjectForPerspective({
     />
   );
 }
+
+const cubeFaces = {
+  // can't use real components here I think because of the cross-environment things
+  front: "placeholder",
+  right: "placeholder",
+  back: "placeholder",
+  left: "placeholder",
+  top: "placeholder",
+  bottom: "placeholder",
+};

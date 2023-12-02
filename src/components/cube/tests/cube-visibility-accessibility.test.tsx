@@ -1,80 +1,75 @@
-// @vitest-environment jsdom
-import { test, describe, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { CubeFace, facesNames } from "../helpers";
-import { cubeFaces } from "./test-helpers";
+import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
+import { CubeFace, facesNames } from "../helpers";
 
-describe("Cube - visibility & accessibility", () => {
-  test("has the container element", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({
-        currentFace: "front",
-      }),
+
+test.describe("Cube - visibility & accessibility", () => {
+  test("has the container element", async ({ mount, page }) => {
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
     );
-    const container = screen.queryByTestId("container");
-    expect(container).toBeInTheDocument();
+    const container = page.getByTestId("container");
+    await expect(container).toBeAttached();
   });
-
-  test("has the scene element", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({
-        currentFace: "front",
-      }),
+  test("has the cube (inner cube, not the container) element", async ({ mount, page }) => {
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
     );
-    const scene = screen.queryByTestId("scene");
-    expect(scene).toBeInTheDocument();
+    const cube = page.getByTestId("cube");
+    await expect(cube).toBeAttached();
   });
-
-  test("has the cube element", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({
-        currentFace: "front",
-      }),
+  test("has the scene element", async ({ mount, page }) => {
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
     );
-    const cube = screen.queryByTestId("cube");
-    expect(cube).toBeInTheDocument();
+    const scene = page.getByTestId("scene");
+    await expect(scene).toBeAttached();
   });
-
-  test("has the 6 face elements", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({
-        currentFace: "front",
-      }),
+  test("has the 6 face elements", async ({ mount, page }) => {
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
     );
     for (const faceName of facesNames) {
-      const face = screen.queryByTestId(faceName);
-      expect(face).toBeInTheDocument();
+      const face = page.getByTestId(faceName);
+      await expect(face).toBeAttached();
     }
   });
-
-  test("the current face is visible in aria", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
+  test("the current face is visible in aria", async ({ mount, page }) => {
+    const currentFaceName = "front";
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({
+        currentFace: currentFaceName,
+      }),
     );
-    const front = screen.queryByTestId("front");
-    expect(front).toHaveAttribute("aria-hidden", "false");
+    const currentFaceLocator = page.getByTestId(currentFaceName);
+    await expect(currentFaceLocator).toHaveAttribute("aria-hidden", "false");
   });
-
-  test("the non-current faces aren't visible in aria", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
+  test("the non-current faces aren't visible in aria", async ({
+    mount,
+    page,
+  }) => {
+    const currentFaceName = "front";
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({
+        currentFace: currentFaceName,
+      }),
     );
     for (const faceName of facesNames.filter(
-      (faceName) => faceName !== "front",
+      (faceName) => faceName !== currentFaceName,
     )) {
-      const face = screen.queryByTestId(faceName);
-      expect(face).toHaveAttribute("aria-hidden", "true");
+      const faceLocator = page.getByTestId(faceName);
+      await expect(faceLocator).toHaveAttribute("aria-hidden", "true");
     }
   });
-
-  test("cube container has aria-live set to polite", () => {
-    render(
-      getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
-    );
-    const container = screen.queryByTestId("container");
-    expect(container).toHaveAttribute("aria-live", "polite");
-  });
+ test("cube container has aria-live set to polite", async ({ mount, page }) => {
+   await mount(
+     getCubeTestSubjectForVisibilityAndAccessibility({
+       currentFace: "front"
+     }),
+   );
+   const containerLocator = page.getByTestId("container");
+   await expect(containerLocator).toHaveAttribute("aria-live", "polite");
+ });
 });
 
 function getCubeTestSubjectForVisibilityAndAccessibility({
@@ -100,3 +95,13 @@ function getCubeTestSubjectForVisibilityAndAccessibility({
     />
   );
 }
+
+const cubeFaces = {
+  // can't use real components here I think because of the cross-environment things
+  front: "placeholder",
+  right: "placeholder",
+  back: "placeholder",
+  left: "placeholder",
+  top: "placeholder",
+  bottom: "placeholder",
+};
