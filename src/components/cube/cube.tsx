@@ -225,7 +225,7 @@ export type CubeProps = {
   /* eslint-enable @typescript-eslint/no-explicit-any */
 } & Either<CubeSizes, CSSVariableForCubeSize>;
 
-type CubeSizes = {
+export type CubeSizes = {
   /**
    * Optional breakpoint-to-size object that is used to set the size of the cube directly in the parameters of the component.
    *
@@ -300,4 +300,4 @@ type CubeSizes = {
   sizes?: Partial<Record<CubeSizeBreakpoint, string> | undefined>;
 };
 
-type CSSVariableForCubeSize = { useCSSVariableForCubeSize: true };
+export type CSSVariableForCubeSize = { useCSSVariableForCubeSize: true };
