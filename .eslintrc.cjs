@@ -16,9 +16,10 @@ module.exports = {
     "dist",
     ".eslintrc.cjs",
     "tailwind.config.js",
+    "postcss.config.js",
     "playwright.config.ts",
     "playwright-ct.config.ts",
-    "playwright"
+    "playwright",
   ],
   parser: "@typescript-eslint/parser",
   plugins: [

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { type Locator } from "playwright/test";
 
-test.describe("Cube - Transition Duration", () => {
+test.describe("Transition Duration", () => {
   test("should have transition duration of 1 second when no transition duration is provided", async ({
     mount,
     page,

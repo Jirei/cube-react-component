@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { type Locator } from "playwright/test";
 
-test.describe("Cube - perspective", () => {
+test.describe("Perspective", () => {
   test("should have perspective none when no perspective is provided", async ({
     mount,
     page,

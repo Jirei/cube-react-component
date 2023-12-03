@@ -1,0 +1,15 @@
+.css-cube-sizing {
+  --cube-css-size: 100vw;
+}
+
+@media (min-width: 1000px) {
+  .css-cube-sizing {
+    --cube-css-size: 50vw;
+  }
+}
+
+@media (min-width: 2000px) {
+  .css-cube-sizing {
+    --cube-css-size: 20vw;
+  }
+}

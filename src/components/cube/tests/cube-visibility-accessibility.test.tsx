@@ -3,7 +3,7 @@ import { Cube } from "../cube";
 import { CubeFace, facesNames } from "../helpers";
 
 
-test.describe("Cube - visibility & accessibility", () => {
+test.describe("Visibility & accessibility", () => {
   test("has the container element", async ({ mount, page }) => {
     await mount(
       getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),

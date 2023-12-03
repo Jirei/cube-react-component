@@ -210,7 +210,7 @@ function getCubeOutputCode({
   <Cube
   /* Remove breakpointsToSizes prop if you use 
    the CSS variable method to set the size */
-   breakpointsToSizes={{ 
+   sizes={{ 
    base: "50vw",
    sm: "40vw",
    md: "35vw",

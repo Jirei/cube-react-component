@@ -27,7 +27,7 @@ export function Cube({
   const componentCSSVariables: {
     [index: string]: string | undefined;
   } = {
-    ...getSizesCSSVariables(sizes),
+    ...getSizesCSSVariables(sizes === "default" ? defaultSizes : sizes),
     "--cube-transition-duration": transitionDuration || undefined,
     "--cube-transition-timing-function": transitionTimingFunction || undefined,
     "--cube-perspective": perspective || undefined,
@@ -297,7 +297,7 @@ export type CubeSizes = {
    *  It is not recommended to rely on this behavior. It's mostly here to be able to see the cube for discovery purposes without having to provide sizes immediately.
    *
    */
-  sizes?: Partial<Record<CubeSizeBreakpoint, string> | undefined>;
+  sizes: Partial<Record<CubeSizeBreakpoint, string>> | "default";
 };
 
 export type CSSVariableForCubeSize = { useCSSVariableForCubeSize: true };

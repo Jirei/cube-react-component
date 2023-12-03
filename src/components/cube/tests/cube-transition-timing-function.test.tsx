@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { type Locator } from "playwright/test";
 
-test.describe("Cube - Transition Timing Function", () => {
+test.describe("Transition Timing Function", () => {
   test("should have transition timing function of 'cubic-bezier(0.4, 0, 0.2, 1)' when no transition timing function is provided", async ({
     mount,
     page,
