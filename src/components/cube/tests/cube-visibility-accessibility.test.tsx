@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { CubeFace, facesNames } from "../helpers";
-
+import { cubeFaces } from "./test-helpers";
 
 test.describe("Visibility & accessibility", () => {
   test("has the container element", async ({ mount, page }) => {
@@ -11,7 +11,10 @@ test.describe("Visibility & accessibility", () => {
     const container = page.getByTestId("container");
     await expect(container).toBeAttached();
   });
-  test("has the cube (inner cube, not the container) element", async ({ mount, page }) => {
+  test("has the cube (inner cube, not the container) element", async ({
+    mount,
+    page,
+  }) => {
     await mount(
       getCubeTestSubjectForVisibilityAndAccessibility({ currentFace: "front" }),
     );
@@ -61,15 +64,32 @@ test.describe("Visibility & accessibility", () => {
       await expect(faceLocator).toHaveAttribute("aria-hidden", "true");
     }
   });
- test("cube container has aria-live set to polite", async ({ mount, page }) => {
-   await mount(
-     getCubeTestSubjectForVisibilityAndAccessibility({
-       currentFace: "front"
-     }),
-   );
-   const containerLocator = page.getByTestId("container");
-   await expect(containerLocator).toHaveAttribute("aria-live", "polite");
- });
+  test("cube container has aria-live set to polite", async ({
+    mount,
+    page,
+  }) => {
+    await mount(
+      getCubeTestSubjectForVisibilityAndAccessibility({
+        currentFace: "front",
+      }),
+    );
+    const containerLocator = page.getByTestId("container");
+    await expect(containerLocator).toHaveAttribute("aria-live", "polite");
+  });
+});
+
+test.describe("face snapshots", () => {
+  for (const faceName of facesNames) {
+    // eslint-disable-next-line playwright/valid-title
+    test(faceName, async ({ page, mount }) => {
+      await mount(
+        getCubeTestSubjectForVisibilityAndAccessibility({
+          currentFace: faceName,
+        }),
+      );
+      expect(await page.screenshot()).toMatchSnapshot({ maxDiffPixels: 0 });
+    });
+  }
 });
 
 function getCubeTestSubjectForVisibilityAndAccessibility({
@@ -95,13 +115,3 @@ function getCubeTestSubjectForVisibilityAndAccessibility({
     />
   );
 }
-
-const cubeFaces = {
-  // can't use real components here I think because of the cross-environment things
-  front: "placeholder",
-  right: "placeholder",
-  back: "placeholder",
-  left: "placeholder",
-  top: "placeholder",
-  bottom: "placeholder",
-};

@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { type Locator } from "playwright/test";
+import { cubeFaces } from "./test-helpers";
 
 test.describe("Perspective", () => {
   test("should have perspective none when no perspective is provided", async ({
@@ -55,13 +56,3 @@ function getCubeTestSubjectForPerspective({
     />
   );
 }
-
-const cubeFaces = {
-  // can't use real components here I think because of the cross-environment things
-  front: "placeholder",
-  right: "placeholder",
-  back: "placeholder",
-  left: "placeholder",
-  top: "placeholder",
-  bottom: "placeholder",
-};
