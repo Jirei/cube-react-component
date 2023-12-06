@@ -9,7 +9,7 @@ test.describe("Additional classes", () => {
       getCubeTestSubjectForAdditionalPropsAndClasses({
         containerAdditionalClasses: "container1 container2",
         cubeAdditionalClasses: "cube1 cube2",
-        cubeFaceAdditionalClasses: "face1 face2",
+        cubeFacesAdditionalClasses: "face1 face2",
       }),
     );
     await expect(page.getByTestId("container")).toHaveClass(
@@ -25,7 +25,7 @@ test.describe("Additional classes", () => {
       getCubeTestSubjectForAdditionalPropsAndClasses({
         containerAdditionalProps: { "data-container": "container" },
         cubeAdditionalProps: { "data-cube": "cube" },
-        cubeFaceAdditionalProps: { "data-face": "face" },
+        cubeFacesAdditionalProps: { "data-face": "face" },
       }),
     );
     await expect(page.getByTestId("container")).toHaveAttribute(
@@ -47,8 +47,8 @@ function getCubeTestSubjectForAdditionalPropsAndClasses({
   containerAdditionalProps,
   cubeAdditionalClasses,
   cubeAdditionalProps,
-  cubeFaceAdditionalClasses,
-  cubeFaceAdditionalProps,
+  cubeFacesAdditionalClasses,
+  cubeFacesAdditionalProps,
 }: {
   containerAdditionalClasses?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -56,9 +56,9 @@ function getCubeTestSubjectForAdditionalPropsAndClasses({
   cubeAdditionalClasses?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   cubeAdditionalProps?: Record<string, any>;
-  cubeFaceAdditionalClasses?: string;
+  cubeFacesAdditionalClasses?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  cubeFaceAdditionalProps?: Record<string, any>;
+  cubeFacesAdditionalProps?: Record<string, any>;
 }) {
   return (
     <Cube
@@ -79,8 +79,8 @@ function getCubeTestSubjectForAdditionalPropsAndClasses({
       containerAdditionalProps={containerAdditionalProps}
       cubeAdditionalClasses={cubeAdditionalClasses}
       cubeAdditionalProps={cubeAdditionalProps}
-      cubeFaceAdditionalClasses={cubeFaceAdditionalClasses}
-      cubeFaceAdditionalProps={cubeFaceAdditionalProps}
+      cubeFacesAdditionalClasses={cubeFacesAdditionalClasses}
+      cubeFacesAdditionalProps={cubeFacesAdditionalProps}
     />
   );
 }

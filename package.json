@@ -1,16 +1,44 @@
 {
   "name": "cube-react-component",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "description": "Flexible react cube component to make a 3D carousel",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-gallery",
+    "cube",
+    "carousel",
+    "gallery",
+    "slider",
+    "3D"
+  ],
+  "homepage": "https://github.com/Jirei/cube-react-component",
+  "bugs": "https://github.com/Jirei/cube-react-component/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Jirei",
+    "url": "https://github.com/Jirei"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/cube-react-component.umd.cjs",
+  "module": "./dist/cube-react-component.js",
+  "exports": {
+    "import": "./dist/cube-react-component.js",
+    "require": "./dist/cube-react-component.umd.cjs"
+  },
+  "types": "./dist/cube-react-component.d.ts",
   "scripts": {
     "dev": "vite",
     "test:dev": "vite --port 9999",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "playwright test --",
-    "test-ct": "playwright test -c playwright-ct.config.ts"
+    "test": "rm -rf 'playwright/.cache' && playwright test -c playwright-ct.config.ts --",
+    "test-production": "rm -rf 'playwright/.cache' && vite build && TEST_PRODUCTION=true playwright test -c playwright-ct.config.ts --"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
@@ -21,26 +49,20 @@
   "devDependencies": {
     "@playwright/experimental-ct-react": "^1.40.1",
     "@playwright/test": "^1.40.1",
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.1.2",
     "@types/node": "^20.10.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
-    "@vitest/coverage-v8": "^0.34.6",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-jest-dom": "^5.1.0",
     "eslint-plugin-playwright": "^0.19.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
-    "eslint-plugin-testing-library": "^6.2.0",
     "eslint-plugin-tsdoc": "^0.2.17",
-    "jsdom": "^23.0.0",
     "playwright": "^1.40.1",
     "postcss": "^8.4.31",
     "prettier": "3.1.0",
@@ -48,9 +70,11 @@
     "tailwindcss": "^3.3.5",
     "typedoc": "^0.25.3",
     "typedoc-material-theme": "^1.0.0",
-    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
-    "vitest": "^0.34.6"
+    "vite-plugin-dts": "^3.6.4"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0"
   }
 }

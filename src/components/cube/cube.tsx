@@ -18,11 +18,13 @@ export function Cube({
   containerAdditionalClasses,
   sceneAdditionalClasses,
   cubeAdditionalClasses,
-  cubeFaceAdditionalClasses,
+  cubeFacesAdditionalClasses,
+  cubeIndividualFaceAdditionalClasses,
   containerAdditionalProps,
   sceneAdditionalProps,
   cubeAdditionalProps,
-  cubeFaceAdditionalProps,
+  cubeFacesAdditionalProps,
+  cubeIndividualFaceAdditionalProps,
 }: CubeProps) {
   const componentCSSVariables: {
     [index: string]: string | undefined;
@@ -60,13 +62,14 @@ export function Cube({
           {facesNames.map((faceName) => {
             return (
               <div
-                {...cubeFaceAdditionalProps}
+                {...cubeFacesAdditionalProps}
+                {...cubeIndividualFaceAdditionalProps?.[faceName]}
                 aria-hidden={faceName !== currentFace}
                 key={faceName}
                 data-testid={faceName}
                 className={`${classes.face} ${classes[`face-${faceName}`]} ${
-                  cubeFaceAdditionalClasses ?? ""
-                }`}
+                  cubeFacesAdditionalClasses ?? ""
+                } ${cubeIndividualFaceAdditionalClasses?.[faceName] ?? ""}`}
               >
                 {cubeFaces[faceName]}
               </div>
@@ -187,7 +190,8 @@ export type CubeProps = {
    *   className={'face-internal-class-1 face-internal-class-2' + ' ' faceAdditionalClasses}
    * >child components...</div>
    * ``` */
-  cubeFaceAdditionalClasses?: string;
+  cubeFacesAdditionalClasses?: string;
+  cubeIndividualFaceAdditionalClasses?: Record<CubeFace, string>;
   /* eslint-disable @typescript-eslint/no-explicit-any */
   /**
    * Object with props to add to the container. Refer to the {@link https://github.com/Jirei/cube-react-component | github repository} to learn what is the container.
@@ -221,7 +225,8 @@ export type CubeProps = {
    *   {...faceAdditionalProps} {...otherProps}
    * >child components...</div>
    * ``` */
-  cubeFaceAdditionalProps?: Record<string, any>;
+  cubeFacesAdditionalProps?: Record<string, any>;
+  cubeIndividualFaceAdditionalProps?: Record<CubeFace, Record<string, any>>;
   /* eslint-enable @typescript-eslint/no-explicit-any */
 } & Either<CubeSizes, CSSVariableForCubeSize>;
 

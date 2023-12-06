@@ -1,14 +1,19 @@
-import { test, expect } from "@playwright/experimental-ct-react";
-import { Cube } from "../cube";
+import { expect } from "@playwright/experimental-ct-react";
+import { test } from "./test-helpers.ts";
+import { Cube } from "adaptive-cube-react-component";
 import { type Locator } from "playwright/test";
-import { cubeFaces } from "./test-helpers";
+import { cubeFaces } from "./test-helpers.ts";
 
 test.describe("Perspective", () => {
   test("should have perspective none when no perspective is provided", async ({
     mount,
     page,
   }) => {
-    await mount(getCubeTestSubjectForPerspective({ perspective: undefined }));
+    await mount(
+      getCubeTestSubjectForPerspective({
+        perspective: undefined,
+      }),
+    );
     const scene = page.getByTestId("scene");
     const perspective = await getPerspectiveFromLocator(scene);
     expect(perspective).toBe("none");
@@ -19,7 +24,9 @@ test.describe("Perspective", () => {
   }) => {
     const providedPerspective = "200px";
     await mount(
-      getCubeTestSubjectForPerspective({ perspective: providedPerspective }),
+      getCubeTestSubjectForPerspective({
+        perspective: providedPerspective,
+      }),
     );
     const scene = page.getByTestId("scene");
     const perspective = await getPerspectiveFromLocator(scene);

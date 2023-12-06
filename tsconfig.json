@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    //this is added to make test aliases not produce IDE errors
+    "paths": { "adaptive-cube-react-component": ["./src/components/cube/cube"] },
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
