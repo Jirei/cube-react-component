@@ -1,6 +1,6 @@
 {
   // Comments are supported, like tsconfig.json
   "entryPoints": ["src/components/cube/index.tsx"],
-  "readme": "documentation.md",
-  "out": "docs"
+  "out": "docs",
+  "sort":["source-order"]
 }

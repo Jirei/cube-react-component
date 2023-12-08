@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { CubeFace, facesNames } from "../helpers";
-import { cubeFaces } from "./test-helpers";
+import { faces } from "./test-helpers";
 
 test.describe("Visibility & accessibility", () => {
   test("has the container element", async ({ mount, page }) => {
@@ -111,7 +111,7 @@ function getCubeTestSubjectForVisibilityAndAccessibility({
       transitionDuration="1s"
       transitionTimingFunction="linear"
       currentFace={currentFace}
-      cubeFaces={cubeFaces}
+      faces={faces}
     />
   );
 }

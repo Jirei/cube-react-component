@@ -1,4 +1,9 @@
-export { Cube, type CubeProps } from "./cube";
+export {
+  Cube,
+  type CubeProps,
+  type CubeSizes,
+  type CSSVariableForCubeSize,
+} from "./cube";
 export {
   facesNames,
   cubeSizeBreakpoints,

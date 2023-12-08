@@ -3,7 +3,7 @@ import { Cube, CubeSizes } from "../cube";
 import { type Page, type Locator } from "playwright/test";
 import { Either, cubeSizeBreakpoints, facesNames } from "../helpers";
 import { defaultSizes } from "../helpers";
-import { cubeFaces } from "./test-helpers";
+import { faces } from "./test-helpers";
 
 const breakpointToTestInfo = getBreakpointToTestInfo();
 
@@ -176,8 +176,8 @@ const incompleteSizesObject = {
 } as const;
 
 const filledIncompleteSizesObject = {
-  base: "65vw",
-  sm: "65vw",
+  base: "50vw",
+  sm: "50vw",
   md: "35vw",
   lg: "35vw",
   xl: "25vw",
@@ -230,7 +230,7 @@ function getCubeTestSubjectForSizing({
         transitionDuration="1s"
         transitionTimingFunction="linear"
         currentFace="front"
-        cubeFaces={cubeFaces}
+        faces={faces}
         useCSSVariableForCubeSize={useCSSVariableForCubeSize}
       />
     );
@@ -242,7 +242,7 @@ function getCubeTestSubjectForSizing({
         transitionDuration="1s"
         transitionTimingFunction="linear"
         currentFace="front"
-        cubeFaces={cubeFaces}
+        faces={faces}
       />
     );
   }

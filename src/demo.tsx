@@ -40,7 +40,7 @@ export default function Demo() {
           transitionDuration={transitionDuration}
           transitionTimingFunction={transitionTimingFunction}
           currentFace={currentFace}
-          cubeFaces={cubeFaces}
+          faces={faces}
         />
         {/* Call to read documentation */}
         {/* <div className="flex flex-col items-center text-base opacity-0 gap-y-1">
@@ -153,7 +153,7 @@ function PlaygroundSimpleInput({
   );
 }
 
-const cubeFaces = {
+const faces = {
   front: demoFaceContentBuilder({
     imgURL: templeWaterImage,
     alt: "Temple and Water Image",
@@ -209,7 +209,7 @@ function getCubeOutputCode({
 }) {
   return `
   <Cube
-  /* Remove breakpointsToSizes prop if you use 
+  /* Remove 'sizes' prop and add prop 'useCSSVariableForCubeSize' if you use 
    the CSS variable method to set the size */
    sizes={{ 
    base: "50vw",
@@ -229,7 +229,10 @@ function getCubeOutputCode({
    />`;
 }
 
-const importCubeCode = "import { Cube } from 'cube-react-component';";
+const importCubeCode = `import { Cube } from "cube-react-component";
+// Or import it in your css file if your bundler doesn't support importing css in the code file.
+import "cube-react-component/style.css";`
+
 
 function LinksToDocumentation() {
   return (

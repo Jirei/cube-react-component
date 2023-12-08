@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { type Locator } from "playwright/test";
-import { cubeFaces } from "./test-helpers";
+import { faces } from "./test-helpers";
 
 test.describe("Transition Timing Function", () => {
   test("should have transition timing function of 'cubic-bezier(0.4, 0, 0.2, 1)' when no transition timing function is provided", async ({
@@ -62,7 +62,7 @@ function getCubeTestSubjectForTransitionTimingFunction({
       transitionDuration="1s"
       transitionTimingFunction={transitionTimingFunction}
       currentFace="front"
-      cubeFaces={cubeFaces}
+      faces={faces}
     />
   );
 }

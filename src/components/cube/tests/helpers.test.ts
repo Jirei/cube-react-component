@@ -26,8 +26,8 @@ test.describe('getSizesCSSVariables', () => {
 
   test('should return the correct CSS variables when provided an incomplete sizes object', () => {
     expect(getSizesCSSVariables(incompleteBreakpointsToSizesObject)).toEqual({
-      "--cube-parameter-size-base": "65vw",
-      "--cube-parameter-size-sm": "65vw",
+      "--cube-parameter-size-base": "50vw",
+      "--cube-parameter-size-sm": "50vw",
       "--cube-parameter-size-md": "35vw",
       "--cube-parameter-size-lg": "35vw",
       "--cube-parameter-size-xl": "25vw",

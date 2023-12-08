@@ -2,7 +2,7 @@ import { expect } from "@playwright/experimental-ct-react";
 import { test } from "./test-helpers.ts";
 import { Cube } from "adaptive-cube-react-component";
 import { type Locator } from "playwright/test";
-import { cubeFaces } from "./test-helpers.ts";
+import { faces } from "./test-helpers.ts";
 
 test.describe("Perspective", () => {
   test("should have perspective none when no perspective is provided", async ({
@@ -59,7 +59,7 @@ function getCubeTestSubjectForPerspective({
       transitionDuration="1s"
       transitionTimingFunction="linear"
       currentFace="front"
-      cubeFaces={cubeFaces}
+      faces={faces}
     />
   );
 }

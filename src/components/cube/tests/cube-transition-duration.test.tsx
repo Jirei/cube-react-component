@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/experimental-ct-react";
 import { Cube } from "../cube";
 import { type Locator } from "playwright/test";
-import { cubeFaces } from "./test-helpers";
+import { faces } from "./test-helpers";
 
 test.describe("Transition Duration", () => {
   test("should have transition duration of 1 second when no transition duration is provided", async ({
@@ -58,7 +58,7 @@ function getCubeTestSubjectForTransitionDuration({
       transitionDuration={transitionDuration}
       transitionTimingFunction="linear"
       currentFace="front"
-      cubeFaces={cubeFaces}
+      faces={faces}
     />
   );
 }
