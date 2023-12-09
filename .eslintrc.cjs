@@ -8,8 +8,6 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
     "plugin:playwright/recommended",
-    //"plugin:jest-dom/recommended",
-    //"plugin:testing-library/react",
     "prettier",
   ],
   ignorePatterns: [
@@ -20,6 +18,7 @@ module.exports = {
     "playwright.config.ts",
     "playwright-ct.config.ts",
     "playwright",
+    "vite-configs/*"
   ],
   parser: "@typescript-eslint/parser",
   plugins: [

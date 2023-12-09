@@ -243,7 +243,7 @@ function LinksToDocumentation() {
         target="_blank"
         href="https://www.example.com"
       >
-        Link To Github Repository
+        Go To Github Repository
         <FaExternalLinkAlt />
       </a>
       <a
@@ -252,7 +252,7 @@ function LinksToDocumentation() {
         target="_blank"
         href="https://www.example.com"
       >
-        Link To Documentation
+        Go To Documentation
         <FaExternalLinkAlt />
       </a>
     </div>
