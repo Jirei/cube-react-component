@@ -13,6 +13,7 @@ dist-ssr
 *.local
 docs
 demo
+coverage
 
 # Editor directories and files
 .vscode/*

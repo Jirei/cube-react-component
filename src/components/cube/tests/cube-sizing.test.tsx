@@ -117,11 +117,9 @@ test.describe("Custom CSS breakpoints", () => {
         page,
       }) => {
         await mount(
-          <div className="css-cube-sizing">
-            {getCubeTestSubjectForSizing({
-              useCSSVariableForCubeSize: true,
-            })}
-          </div>,
+          getCubeTestSubjectForSizing({
+            useCSSVariableForCubeSize: true,
+          }),
         );
 
         for (const ElementToVerifySize of getElementsToVerifySize(page)) {
@@ -232,6 +230,7 @@ function getCubeTestSubjectForSizing({
         currentFace="front"
         faces={faces}
         useCSSVariableForCubeSize={useCSSVariableForCubeSize}
+        containerAdditionalClasses="css-cube-sizing"
       />
     );
   } else {

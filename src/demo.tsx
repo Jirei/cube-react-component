@@ -9,6 +9,7 @@ import cookingImage from "./assets/compressed_cube_images/cooking.jpg";
 import statueImage from "./assets/compressed_cube_images/statue.jpg";
 import CodeBlock from "./components/code-block";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaArrowRotateLeft } from "react-icons/fa6";
 
 export default function Demo() {
   const [currentFace, setCurrentFace] = useState<CubeFace>("front");
@@ -25,7 +26,7 @@ export default function Demo() {
       <div className="flex flex-col items-center  font-['Roboto'] gap-y-16 gap-x-32 mt-10 mb-32 text-secondary-1-very-dark">
         {/* Page Title */}
         <h1 className="p-1 text-3xl font-bold text-center">
-          Cube React Component
+          Cube React Component Demo + Live builder
         </h1>
         <Cube
           sizes={{
@@ -43,14 +44,14 @@ export default function Demo() {
           faces={faces}
         />
         {/* Call to read documentation */}
-        {/* <div className="flex flex-col items-center text-base opacity-0 gap-y-1">
+        <div className="flex flex-col items-center text-base gap-y-1 ">
           <p className="text-lg font-light">
             Refer to the documentation for more details
           </p>
           <a className="font-bold hover:cursor-pointer hover:underline">
             Documentation
           </a>
-        </div> */}
+        </div>
         {/* Face Selection radio selection */}
         <div className="flex flex-col items-center text-xl gap-y-5">
           <h2 className="mt-8 font-bold">
@@ -88,19 +89,22 @@ export default function Demo() {
             label="Transition Duration"
             inputId="transition-duration"
             value={transitionDuration}
+            defaultValue="1s"
             setValue={setTransitionDuration}
           />
           <PlaygroundSimpleInput
             label="Transition Timing Function"
             inputId="transition-timing-function"
             value={transitionTimingFunction}
+            defaultValue="cubic-bezier(0.4, 0, 0.2, 1)"
             setValue={setTransitionTimingFunction}
           />
           <PlaygroundSimpleInput
             label="Perspective"
             inputId="perspective"
-            setValue={setPerspective}
             value={perspective}
+            defaultValue="none"
+            setValue={setPerspective}
           />
         </div>
         <h2 className="text-3xl font-bold text-center text-secondary-1-dark">
@@ -128,11 +132,13 @@ function PlaygroundSimpleInput({
   label,
   inputId,
   value,
+  defaultValue,
   setValue,
 }: {
   label: string;
   inputId: string;
   value: string;
+  defaultValue: string;
   setValue: (value: string) => void;
 }) {
   return (
@@ -140,15 +146,24 @@ function PlaygroundSimpleInput({
       <label className="text-xl hover:cursor-pointer" htmlFor={inputId}>
         {label}:
       </label>
-      <input
-        className="p-1 text-lg text-center bg-white"
-        id={inputId}
-        type="text"
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-      />
+      <div className="flex items-center gap-x-3">
+        <input
+          className="p-1 text-lg text-center bg-white"
+          id={inputId}
+          type="text"
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+        />
+        <button
+          title="reset"
+          className="p-0 bg-transparent w-fit h-fit hover:scale-110"
+          onClick={() => setValue(defaultValue)}
+        >
+          <FaArrowRotateLeft />
+        </button>
+      </div>
     </div>
   );
 }
@@ -230,9 +245,8 @@ function getCubeOutputCode({
 }
 
 const importCubeCode = `import { Cube } from "cube-react-component";
-// Or import it in your css file if your bundler doesn't support importing css in the code file.
-import "cube-react-component/style.css";`
-
+// Or import the css in your css file if your bundler doesn't support importing css in the code file.
+import "cube-react-component/style.css";`;
 
 function LinksToDocumentation() {
   return (
@@ -252,7 +266,7 @@ function LinksToDocumentation() {
         target="_blank"
         href="https://www.example.com"
       >
-        Go To Documentation
+        Go To API Documentation
         <FaExternalLinkAlt />
       </a>
     </div>

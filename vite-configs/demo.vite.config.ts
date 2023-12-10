@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 
 export default defineConfig({
   root: resolve(__dirname, ".."),
-  plugins: [react()],
+   plugins: [react()],
   build: {
     outDir: "demo"
   }

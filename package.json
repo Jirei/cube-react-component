@@ -32,12 +32,12 @@
   },
   "types": "./dist/cube-react-component.d.ts",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite -c ./vite-configs/demo.vite.config.ts",
     "test:dev": "vite --port 9999",
     "build-component": "tsc && vite build -c ./vite-configs/component.vite.config.ts",
     "build-demo": "tsc && vite build -c ./vite-configs/demo.vite.config.ts",
     "preview-demo": "tsc && vite build -c ./vite-configs/demo.vite.config.ts && npx vite preview -c ./vite-configs/demo.vite.config.ts",
-    "build-docs": "typedoc",
+    "build-docs": "typedoc && cp ./assets/cube-demo.gif ./docs/assets/cube-demo.gif",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "rm -rf 'playwright/.cache' && playwright test -c playwright-ct.config.ts",
@@ -45,7 +45,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^18.0.0"
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@playwright/experimental-ct-react": "^1.40.1",

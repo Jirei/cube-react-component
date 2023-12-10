@@ -452,6 +452,7 @@ export type CubeSizes = {
  *    faces={faces}
  *    useCSSVariableForCubeSize={true}
  *    // or just useCSSVariableForCubeSize since the prop value will default to true
+ *    useCSSVariableForCubeSize
  *  />
  *
  * ```
