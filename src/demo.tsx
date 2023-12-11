@@ -1,5 +1,5 @@
 import { Cube, CubeFace, facesNames } from "cube-react-component-test-experimental";
-import "../dist/style.css";
+import "cube-react-component-test-experimental/style.css";
 import { useState } from "react";
 import templeWaterImage from "./assets/compressed_cube_images/temple-water.jpg";
 import templeImage from "./assets/compressed_cube_images/temple.jpg";
