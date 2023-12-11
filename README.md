@@ -4,7 +4,7 @@
 
 **Here is a GIF of the cube in the demo so that you can see what it looks like at a glance (the actual demo is live, customizable and allow you to export the code necessary to instantiate the cube with the used custom values: [open the demo page](https://Jirei.github.io/cube-react-component/demo)):**
 
-![cube demo](assets/cube-demo.gif)
+![cube demo](https://github.com/Jirei/cube-react-component/blob/main/assets/cube-demo.gif?raw=true)
 
 ### _Cube react component_ is a cool 3D react cube component.
 
