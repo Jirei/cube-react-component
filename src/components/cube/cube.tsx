@@ -10,7 +10,7 @@ import {
 
 /**
  *
- * Cube Component to make a nice 3D gallery. Refer to the {@link https://github.com/Jirei/cube-react-component/docs/index.html | documentation main page  } and also to the {@link http://example.com | CubeProps section} for more details about the arguments you need to provide.
+ * Cube Component to make a nice 3D gallery. Refer to the {@link https://Jirei.github.io/cube-react-component | documentation  } and also to the {@link CubeProps } for more details about the arguments you need to provide.
  * You should start getting helpful tooltip hints when you start to write the arguments of this component.
  * @example Instantiating the Cube:
  * ```tsx
@@ -450,6 +450,8 @@ export type CubeSizes = {
  *    transitionTimingFunction="linear"
  *    currentFace="front"
  *    faces={faces}
+ *    // set the CSS variable on the container (or any wrapping component above if you want)
+ *    containerAdditionalClasses="css-cube-sizing"
  *    useCSSVariableForCubeSize={true}
  *    // or just useCSSVariableForCubeSize since the prop value will default to true
  *    useCSSVariableForCubeSize

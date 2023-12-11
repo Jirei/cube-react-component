@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Flexible react cube component to make a 3D carousel",
+  "description": "Flexible 3D react cube component to make an image gallery",
   "keywords": [
     "react",
     "react-component",
@@ -21,14 +21,18 @@
     "name": "Jirei",
     "url": "https://github.com/Jirei"
   },
+  "main": "./dist/cube-react-component.js",
+  "module": "./dist/cube-react-component.js",
   "files": [
     "dist"
   ],
-  "main": "./dist/cube-react-component.umd.cjs",
-  "module": "./dist/cube-react-component.js",
   "exports": {
-    "import": "./dist/cube-react-component.js",
-    "require": "./dist/cube-react-component.umd.cjs"
+    ".": {
+      "import": "./dist/cube-react-component.js"
+    },
+    "./style.css": {
+      "import": "./dist/style.css"
+    }
   },
   "types": "./dist/cube-react-component.d.ts",
   "scripts": {
@@ -41,7 +45,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "rm -rf 'playwright/.cache' && playwright test -c playwright-ct.config.ts",
-    "test-production": "rm -rf 'playwright/.cache' && vite build && TEST_PRODUCTION=true playwright test -c playwright-ct.config.ts"
+    "test-production": "rm -rf 'playwright/.cache' && vite build -c ./vite-configs/component.vite.config.ts && TEST_PRODUCTION=true playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {},
   "peerDependencies": {

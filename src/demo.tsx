@@ -12,11 +12,31 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { FaArrowRotateLeft } from "react-icons/fa6";
 
 export default function Demo() {
+  const transitionDurationDefaultValue = "1s";
+  const transitionTimingFunctionDefaultValue = "cubic-bezier(0.4, 0, 0.2, 1)";
+  const perspectiveDefaultValue = "none";
+  const baseSizeDefaultValue = "50vw";
+  const smSizeDefaultValue = "40vw";
+  const mdSizeDefaultValue = "35vw";
+  const lgSizeDefaultValue = "30vw";
+  const xlSizeDefaultValue = "25vw";
+  const twoXlSizeDefaultValue = "20vw";
   const [currentFace, setCurrentFace] = useState<CubeFace>("front");
-  const [transitionDuration, setTransitionDuration] = useState<string>("1s");
-  const [perspective, setPerspective] = useState<string>("none");
+  const [transitionDuration, setTransitionDuration] = useState<string>(
+    transitionDurationDefaultValue,
+  );
   const [transitionTimingFunction, setTransitionTimingFunction] =
-    useState<string>("cubic-bezier(0.4, 0, 0.2, 1)");
+    useState<string>(transitionTimingFunctionDefaultValue);
+
+  const [perspective, setPerspective] = useState<string>(
+    perspectiveDefaultValue,
+  );
+  const [baseSize, setBaseSize] = useState<string>(baseSizeDefaultValue);
+  const [smSize, setSmSize] = useState<string>(smSizeDefaultValue);
+  const [mdSize, setMdSize] = useState<string>(mdSizeDefaultValue);
+  const [lgSize, setLgSize] = useState<string>(lgSizeDefaultValue);
+  const [xlSize, setXlSize] = useState<string>(xlSizeDefaultValue);
+  const [twoXlSize, setTwoXlSize] = useState<string>(twoXlSizeDefaultValue);
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setCurrentFace(e.target.value as CubeFace);
 
@@ -30,12 +50,12 @@ export default function Demo() {
         </h1>
         <Cube
           sizes={{
-            base: "50vw",
-            sm: "40vw",
-            md: "35vw",
-            lg: "30vw",
-            xl: "25vw",
-            "2xl": "20vw",
+            base: baseSize,
+            sm: smSize,
+            md: mdSize,
+            lg: lgSize,
+            xl: xlSize,
+            "2xl": twoXlSize,
           }}
           perspective={perspective}
           transitionDuration={transitionDuration}
@@ -48,7 +68,12 @@ export default function Demo() {
           <p className="text-lg font-light">
             Refer to the documentation for more details
           </p>
-          <a className="font-bold hover:cursor-pointer hover:underline">
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://Jirei.github.io/cube-react-component"
+            className="font-bold hover:cursor-pointer hover:underline"
+          >
             Documentation
           </a>
         </div>
@@ -89,22 +114,64 @@ export default function Demo() {
             label="Transition Duration"
             inputId="transition-duration"
             value={transitionDuration}
-            defaultValue="1s"
+            defaultValue={transitionDurationDefaultValue}
             setValue={setTransitionDuration}
           />
           <PlaygroundSimpleInput
             label="Transition Timing Function"
             inputId="transition-timing-function"
             value={transitionTimingFunction}
-            defaultValue="cubic-bezier(0.4, 0, 0.2, 1)"
+            defaultValue={transitionTimingFunctionDefaultValue}
             setValue={setTransitionTimingFunction}
           />
           <PlaygroundSimpleInput
             label="Perspective"
             inputId="perspective"
             value={perspective}
-            defaultValue="none"
+            defaultValue={perspectiveDefaultValue}
             setValue={setPerspective}
+          />
+          <PlaygroundSimpleInput
+            label="Base Size"
+            inputId="base-size"
+            value={baseSize}
+            defaultValue={baseSizeDefaultValue}
+            setValue={setBaseSize}
+          />
+          <PlaygroundSimpleInput
+            label="Sm Size"
+            inputId="sm-size"
+            value={smSize}
+            defaultValue={smSizeDefaultValue}
+            setValue={setSmSize}
+          />
+          <PlaygroundSimpleInput
+            label="Md Size"
+            inputId="md-size"
+            value={mdSize}
+            defaultValue={mdSizeDefaultValue}
+            setValue={setMdSize}
+          />
+          <PlaygroundSimpleInput
+            label="Lg Size"
+            inputId="lg-size"
+            value={lgSize}
+            defaultValue={lgSizeDefaultValue}
+            setValue={setLgSize}
+          />
+          <PlaygroundSimpleInput
+            label="Xl Size"
+            inputId="xl-size"
+            value={xlSize}
+            defaultValue={xlSizeDefaultValue}
+            setValue={setXlSize}
+          />
+          <PlaygroundSimpleInput
+            label="2xl Size"
+            inputId="2xl-size"
+            value={twoXlSize}
+            defaultValue={twoXlSizeDefaultValue}
+            setValue={setTwoXlSize}
           />
         </div>
         <h2 className="text-3xl font-bold text-center text-secondary-1-dark">
@@ -121,6 +188,12 @@ export default function Demo() {
             perspective,
             transitionDuration,
             transitionTimingFunction,
+            baseSize,
+            smSize,
+            mdSize,
+            lgSize,
+            xlSize,
+            twoXlSize,
           })}
         />
       </div>
@@ -217,22 +290,34 @@ function getCubeOutputCode({
   perspective,
   transitionDuration,
   transitionTimingFunction,
+  baseSize,
+  smSize,
+  mdSize,
+  lgSize,
+  xlSize,
+  twoXlSize,
 }: {
   perspective: string;
   transitionDuration: string;
   transitionTimingFunction: string;
+  baseSize: string;
+  smSize: string;
+  mdSize: string;
+  lgSize: string;
+  xlSize: string;
+  twoXlSize: string;
 }) {
   return `
   <Cube
   /* Remove 'sizes' prop and add prop 'useCSSVariableForCubeSize' if you use 
    the CSS variable method to set the size */
    sizes={{ 
-   base: "50vw",
-   sm: "40vw",
-   md: "35vw",
-   lg: "30vw",
-   xl: "25vw",
-   "2xl": "20vw",
+   base: "${baseSize}",
+   sm: "${smSize}",
+   md: "${mdSize}",
+   lg: "${lgSize}",
+   xl: "${xlSize}",
+   "2xl": "${twoXlSize}",
    }}
    perspective="${perspective}"
    transitionDuration="${transitionDuration}"
@@ -255,7 +340,7 @@ function LinksToDocumentation() {
         className="flex items-center justify-around p-3 font-bold text-white rounded gap-x-2 bg-secondary-1-dark hover:scale-105 hover:text-white"
         rel="noreferrer"
         target="_blank"
-        href="https://www.example.com"
+        href="https://github.com/Jirei/cube-react-component"
       >
         Go To Github Repository
         <FaExternalLinkAlt />
@@ -264,7 +349,7 @@ function LinksToDocumentation() {
         className="flex items-center justify-around p-3 font-bold text-white rounded gap-x-2 bg-secondary-2-dark hover:scale-105 hover:text-white"
         rel="noreferrer"
         target="_blank"
-        href="https://www.example.com"
+        href="https://Jirei.github.io/cube-react-component"
       >
         Go To API Documentation
         <FaExternalLinkAlt />

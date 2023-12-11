@@ -69,7 +69,7 @@ export function getSizesCSSVariables(
 
 /** Type exported for your convenience if you need it in your code. 
  * ```tsx
- * type CubeSizeBreakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl" // Clearer version of the type for illustration purposes.
+ * type CubeSizeBreakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl" // Clearer version of the type for illustration purposes for typedoc because it doesn't simplify the type.
  * ```
  * 
  * 
@@ -81,7 +81,7 @@ export type CubeSizeBreakpoint = UnionTypeFromValuesOfArray<
 /** 
   * Type representing the name of any one face of the cubes.
   * ```tsx
-  * type CubeFace = "front" | "right" | "back" | "left" | "top" | "bottom" // Clearer version of the type for illustration purposes.
+  * type CubeFace = "front" | "right" | "back" | "left" | "top" | "bottom" // Clearer version of the type for illustration purposes for typedoc because it doesn't simplify the type.
   * ```
   * 
   * Can be used to type your code in TypeScript. For example with useState() from React:

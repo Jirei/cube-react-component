@@ -14,6 +14,7 @@ export default defineConfig({
     })],
   build: {
     lib: {
+      formats:['es'],
       entry: resolve(__dirname, '../src/components/cube/index.tsx'),
       name: "CubeReactComponent",
       fileName: "cube-react-component"
