@@ -8,5 +8,5 @@ export default defineConfig({
   build: {
     outDir: "demo"
   },
-  base:"/demo"
+  base:"/cube-react-component/demo"
 });
