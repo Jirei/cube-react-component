@@ -1,6 +1,6 @@
 {
   "name": "cube-react-component-test-experimental",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "Flexible 3D react cube component to make an image gallery",
   "keywords": [
@@ -28,9 +28,6 @@
   "exports": {
     ".": {
       "import": "./dist/cube-react-component.js"
-    },
-    "./style.css": {
-      "import": "./dist/style.css"
     }
   },
   "types": "./dist/cube-react-component.d.ts",
