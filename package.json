@@ -1,5 +1,5 @@
 {
-  "name": "cube-react-component",
+  "name": "cube-react-component-test-experimental",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -29,9 +29,6 @@
   "exports": {
     ".": {
       "import": "./dist/cube-react-component.js"
-    },
-    "./style.css": {
-      "import": "./dist/style.css"
     }
   },
   "types": "./dist/cube-react-component.d.ts",
