@@ -330,7 +330,8 @@ function getCubeOutputCode({
 }
 
 const importCubeCode = `import { Cube } from "cube-react-component";
-// Or import the CSS in your CSS file if your bundler doesn't support importing CSS in the code file (with a dist additional path segment before the style.css if from a CSS file, the path is in the docs).
+// Or import the CSS in your CSS file if your bundler doesn't support importing CSS in the code file 
+// (with a 'dist' additional path segment: "cube-react-component/dist/style.css" because the CSS import doesn't have mapping).
 import "cube-react-component/style.css";`;
 
 function LinksToDocumentation() {

@@ -1,4 +1,4 @@
-name: Publish Package to npmjs
+name: Build & Test component then publish package to npm
 on:
   # release:
   #   types: [published]
