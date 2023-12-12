@@ -1,4 +1,4 @@
-name: Build & Test component then publish package to npm
+name: Build and test the cube component then publish package to npm
 on:
   # release:
   #   types: [published]
@@ -12,8 +12,8 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
       - run: npm ci
       - run: npm run test-production
       - run: npm publish
