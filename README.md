@@ -58,7 +58,7 @@ Look at the [API documentation](https://Jirei.github.io/cube-react-component) fo
  npm install cube-react-component // Expect you to have React "18.2.0" or later, didn't test with older versions but should work too.
 ```
 
-#### 2. Import the required CSS, either in your code file with your bundler or directly in your CSS
+#### 2. Import the required CSS, either in your code file with your bundler or directly in your CSS (Paths are different between the two, make sure to add the dist in the path for the in-CSS-file import)
 
 If your bundler support it, you can import the CSS in the code file where you want to instantiate the cube:
 

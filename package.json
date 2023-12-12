@@ -1,6 +1,6 @@
 {
-  "name": "cube-react-component-test-experimental",
-  "version": "0.7.0",
+  "name": "cube-react-component",
+  "version": "0.1.0",
   "type": "module",
   "description": "Flexible 3D react cube component to make an image gallery",
   "keywords": [
@@ -58,7 +58,7 @@
     "@uidotdev/usehooks": "^2.4.1",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
-    "cube-react-component-test-experimental": "^0.5.0",
+    "cube-react-component-test-experimental": "*",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-playwright": "^0.19.0",

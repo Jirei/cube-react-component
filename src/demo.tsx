@@ -1,4 +1,8 @@
-import { Cube, CubeFace, facesNames } from "cube-react-component-test-experimental";
+import {
+  Cube,
+  CubeFace,
+  facesNames,
+} from "cube-react-component-test-experimental";
 import "cube-react-component-test-experimental/style.css";
 import { useState } from "react";
 import templeWaterImage from "./assets/compressed_cube_images/temple-water.jpg";
@@ -330,7 +334,7 @@ function getCubeOutputCode({
 }
 
 const importCubeCode = `import { Cube } from "cube-react-component";
-// Or import the css in your css file if your bundler doesn't support importing css in the code file.
+// Or import the CSS in your CSS file if your bundler doesn't support importing CSS in the code file.
 import "cube-react-component/style.css";`;
 
 function LinksToDocumentation() {
