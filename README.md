@@ -1,5 +1,8 @@
 # Cube React Component
 
+![](https://github.com/Jirei/cube-react-component/actions/workflows/publish.yml/badge.svg)
+![](https://github.com/Jirei/cube-react-component/actions/workflows/documentation.yml/badge.svg)
+
 ## 3D Cube component made with React, ideal for a cool gallery
 
 **Here is a GIF of the cube in the demo so that you can see what it looks like at a glance (the actual demo is live, customizable and allow you to export the code necessary to instantiate the cube with the used custom values: [open the demo page](https://Jirei.github.io/cube-react-component/demo)):**
