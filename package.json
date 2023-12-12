@@ -1,6 +1,6 @@
 {
   "name": "cube-react-component",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "Flexible 3D react cube component to make an image gallery",
   "keywords": [
