@@ -45,7 +45,7 @@ The cube has the `aria-live="polite"` property so that the cube announces face c
 
 #### Ease of use
 
-This package exports multiple variables with values & TypeScript types you may want to use when using this cube: an raay with the names of the default breakpoints, an array with the names of the faces, a type that only accepts the names of the faces, etc. Look at the [API documentation](https://Jirei.github.io/cube-react-component) for more details about what is available (everything is listed in the navigation section).
+This package exports multiple variables with values & TypeScript types you may want to use when using this cube: an array with the names of the default breakpoints, an array with the names of the faces, a type that only accepts the names of the faces, etc. Look at the [API documentation](https://Jirei.github.io/cube-react-component) for more details about what is available (everything is listed in the navigation section).
 
 #### Reliability
 
@@ -78,7 +78,7 @@ Or you can just import the CSS in an active CSS file:
 Then you just have to import the Cube and instantiate it with your values:
 
 ```tsx
-import { Cube } from "react-cube-component";
+import { Cube } from "cube-react-component";
 ...
 <Cube
   sizes={{
